@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Batzaya Byambasuren — full-stack developer building React and Node.js applications.">
+    <meta name="theme-color" content="#050508">
+    <title>Batzaya Byambasuren · Full-stack developer</title>
+    <script>
+        (function () {
+            try {
+                var k = 'baz-portfolio-theme';
+                var t = localStorage.getItem(k);
+                if (t !== 'dark' && t !== 'light') {
+                    t = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+                }
+                document.documentElement.setAttribute('data-theme', t);
+                var m = document.querySelector('meta[name="theme-color"]');
+                if (m) m.setAttribute('content', t === 'light' ? '#f1f5f9' : '#050508');
+            } catch (e) {}
+        })();
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: ['selector', '[data-theme="dark"]'],
+            theme: {
+                extend: {
+                    colors: {
+                        deep: '#050508',
+                        surface: '#12121a',
+                    },
+                },
+            },
+        };
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="antialiased">
+    <div class="bg-mesh" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <nav class="nav-glass fixed top-0 w-full z-50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16 lg:h-[4.25rem]">
+                <a href="#home" class="flex items-center gap-2 group">
+                    <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-400 to-violet-500 text-white text-sm font-bold shadow-lg shadow-cyan-500/20">BB</span>
+                    <span class="text-sm font-semibold tracking-tight tc-heading hidden sm:inline">Batzaya<span class="tc-muted font-normal"> Byambasuren</span></span>
+                </a>
+                <div class="hidden lg:flex items-center gap-6">
+                    <a href="#about" class="nav-link">About</a>
+                    <a href="#skills" class="nav-link">Skills</a>
+                    <a href="#experience" class="nav-link">Experience</a>
+                    <a href="#projects" class="nav-link">Projects</a>
+                    <a href="#resume" class="nav-link">Resume</a>
+                    <button type="button" class="theme-toggle" aria-label="Switch theme">
+                        <i class="fas fa-sun theme-icon-dark" data-theme-icon="dark" aria-hidden="true"></i>
+                        <i class="fas fa-moon theme-icon-light hidden" data-theme-icon="light" aria-hidden="true"></i>
+                    </button>
+                    <a href="#contact" class="btn-primary inline-flex items-center rounded-full px-5 py-2 text-sm">Let&apos;s talk</a>
+                </div>
+                <div class="flex items-center gap-2 lg:hidden">
+                    <button type="button" class="theme-toggle" aria-label="Switch theme">
+                        <i class="fas fa-sun text-sm theme-icon-dark" data-theme-icon="dark" aria-hidden="true"></i>
+                        <i class="fas fa-moon text-sm theme-icon-light hidden" data-theme-icon="light" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" id="menu-btn" class="menu-btn-icon p-2 rounded-lg hover:bg-black/5 dark:hover:bg-white/5 transition" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+                        <i class="fas fa-bars text-lg"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div id="mobile-menu" class="hidden lg:hidden border-t mobile-menu-panel backdrop-blur-xl">
+            <div class="px-4 py-4 flex flex-col gap-1">
+                <a href="#about" class="px-3 py-3 rounded-lg tc-nav hover:bg-black/5 dark:hover:bg-white/5 hover-heading text-sm font-medium">About</a>
+                <a href="#skills" class="px-3 py-3 rounded-lg tc-nav hover:bg-black/5 dark:hover:bg-white/5 hover-heading text-sm font-medium">Skills</a>
+                <a href="#experience" class="px-3 py-3 rounded-lg tc-nav hover:bg-black/5 dark:hover:bg-white/5 hover-heading text-sm font-medium">Experience</a>
+                <a href="#projects" class="px-3 py-3 rounded-lg tc-nav hover:bg-black/5 dark:hover:bg-white/5 hover-heading text-sm font-medium">Projects</a>
+                <a href="#resume" class="px-3 py-3 rounded-lg tc-nav hover:bg-black/5 dark:hover:bg-white/5 hover-heading text-sm font-medium">Resume</a>
+                <a href="#contact" class="btn-primary mt-2 text-center rounded-full px-5 py-3 text-sm">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="relative pt-28 pb-20 md:pt-36 md:pb-28 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="hero-blob absolute -top-20 right-0 w-[420px] h-[420px] rounded-full bg-cyan-500/15 blur-[100px] pointer-events-none" aria-hidden="true"></div>
+        <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-14 lg:gap-10">
+            <div class="max-w-xl reveal">
+                <p class="eyebrow mb-4">Available for projects</p>
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight tc-heading leading-[1.08] mb-5">
+                    Full-stack products with clarity and speed.
+                </h1>
+                <p class="text-lg tc-body leading-relaxed mb-8">
+                    I&apos;m <span class="tc-bright font-medium">Batzaya Byambasuren</span> — I build responsive interfaces and solid APIs with React, Node.js, and modern JavaScript. Focused on performance, maintainability, and polished UX.
+                </p>
+                <div class="flex flex-wrap gap-3 mb-10">
+                    <a href="#contact" class="btn-primary inline-flex items-center justify-center rounded-full px-7 py-3 text-sm">Contact me</a>
+                    <a href="#projects" class="btn-ghost inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold">View work</a>
+                    <a href="resumeFinal.pdf" download="Batzaya-Byambasuren-resume.pdf" class="btn-ghost inline-flex items-center justify-center rounded-full px-7 py-3 text-sm font-semibold gap-2"><i class="fas fa-file-pdf" aria-hidden="true"></i> Résumé PDF</a>
+                </div>
+                <div class="flex flex-wrap gap-3 text-xs tc-muted">
+                    <span class="tag-neutral">React</span>
+                    <span class="tag-neutral">Node.js</span>
+                    <span class="tag-neutral">MongoDB</span>
+                    <span class="tag-neutral">Tailwind</span>
+                </div>
+            </div>
+            <div class="relative flex justify-center lg:justify-end shrink-0 reveal">
+                <div class="relative">
+                    <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-cyan-500/40 to-violet-600/40 blur-2xl scale-110" aria-hidden="true"></div>
+                    <img
+                        src="assets/images/profile.jpg"
+                        alt="Batzaya Byambasuren"
+                        class="relative w-64 h-64 sm:w-72 sm:h-72 lg:w-80 lg:h-80 rounded-full object-cover ring-2 ring-[color:var(--ring-image)] ring-offset-4 ring-offset-[var(--bg-deep)] shadow-2xl"
+                        width="320"
+                        height="320"
+                    >
+                    <div class="absolute -bottom-2 -right-2 flex h-14 w-14 items-center justify-center rounded-2xl border bdr-default shadow-xl" style="background: var(--icon-badge-bg)">
+                        <i class="fas fa-code link-accent text-xl" aria-hidden="true"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-t bdr-top">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="eyebrow mb-3">About</p>
+                <h2 class="section-title tc-heading mb-4">Three ways I help teams ship</h2>
+                <p class="tc-body">From interface craft to API design, I stay close to the user and the data model so products feel fast and stay easy to evolve.</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-5 lg:gap-6">
+                <article class="card-surface p-7 reveal">
+                    <div class="w-11 h-11 rounded-xl bg-cyan-500/15 flex items-center justify-center mb-5">
+                        <img src="https://baz-portfolio.netlify.app/assets/cursorIcon-KX7f2O15.png" alt="" class="w-6 h-6 opacity-90" width="24" height="24">
+                    </div>
+                    <h3 class="text-lg font-semibold tc-heading mb-2">Frontend</h3>
+                    <p class="text-sm tc-body leading-relaxed">Responsive, accessible UIs with React and Tailwind — optimized bundles and clear component structure.</p>
+                </article>
+                <article class="card-surface p-7 reveal">
+                    <div class="w-11 h-11 rounded-xl bg-violet-500/15 flex items-center justify-center mb-5">
+                        <img src="https://baz-portfolio.netlify.app/assets/serverIcon-BYllJZTu.png" alt="" class="w-6 h-6 opacity-90" width="24" height="24">
+                    </div>
+                    <h3 class="text-lg font-semibold tc-heading mb-2">Backend</h3>
+                    <p class="text-sm tc-body leading-relaxed">REST and GraphQL-style APIs with Node and Express, wired to MongoDB with sensible validation and errors.</p>
+                </article>
+                <article class="card-surface p-7 reveal">
+                    <div class="w-11 h-11 rounded-xl bg-fuchsia-500/15 flex items-center justify-center mb-5">
+                        <img src="https://baz-portfolio.netlify.app/assets/uiIcon-DOhBKMDG.png" alt="" class="w-6 h-6 opacity-90" width="24" height="24">
+                    </div>
+                    <h3 class="text-lg font-semibold tc-heading mb-2">Product UI</h3>
+                    <p class="text-sm tc-body leading-relaxed">Layouts and flows in Figma that translate cleanly into code — fewer surprises between design and implementation.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 reveal">
+                <div>
+                    <p class="eyebrow mb-3">Stack</p>
+                    <h2 class="section-title tc-heading">Tools I use every week</h2>
+                </div>
+                <p class="text-sm tc-muted max-w-md">Languages, frameworks, and platforms I reach for when building production web apps.</p>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 lg:gap-5">
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">HTML</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">CSS</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">JavaScript</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://baz-portfolio.netlify.app/assets/react-DnG5Nebg.png" alt="" class="w-11 h-11 mx-auto mb-3" width="44" height="44">
+                    <p class="skill-label">React</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://baz-portfolio.netlify.app/assets/node-BuugxZfd.png" alt="" class="w-11 h-11 mx-auto mb-3" width="44" height="44">
+                    <p class="skill-label">Node.js</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 icon-express" width="44" height="44">
+                    <p class="skill-label">Express</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">MongoDB</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">GraphQL</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tailwindcss/tailwindcss-plain.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">Tailwind</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">Figma</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="" class="w-11 h-11 mx-auto mb-3 opacity-90" width="44" height="44">
+                    <p class="skill-label">Git</p>
+                </div>
+                <div class="skill-tile p-5 text-center reveal">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/npm/npm-original-wordmark.svg" alt="" class="w-11 h-11 mx-auto mb-3" width="44" height="44">
+                    <p class="skill-label">npm</p>
+                </div>
+            </div>
+            <div class="mt-12 p-6 rounded-2xl border bdr-default bg-info reveal">
+                <p class="text-xs font-semibold uppercase tracking-wider tc-muted mb-3">Broader ecosystem</p>
+                <p class="text-sm tc-body leading-relaxed">
+                    Also comfortable with TypeScript, Next.js, Redux, REST design, PostgreSQL, Firebase, Vite, Webpack, testing workflows, and CI-friendly project structure.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-t bdr-top bg-sec">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+                <p class="eyebrow mb-3">Experience</p>
+                <h2 class="section-title tc-heading">Where I&apos;ve contributed</h2>
+            </div>
+            <div class="space-y-10 max-w-3xl mx-auto">
+                <article class="relative pl-10 reveal">
+                    <span class="timeline-line" aria-hidden="true"></span>
+                    <div class="timeline-dot absolute left-0 top-1.5" aria-hidden="true"></div>
+                    <div class="card-surface p-6 lg:p-8">
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-4 mb-4">
+                            <img src="https://baz-portfolio.netlify.app/assets/tech2high-BiADQFYD.png" alt="Tech2High" class="w-12 h-12 rounded-xl object-cover ring-1 ring-[color:var(--border)]" width="48" height="48">
+                            <div>
+                                <h3 class="text-lg font-semibold tc-heading">Junior Web Developer</h3>
+                                <p class="text-sm ex-accent font-medium">Tech2High</p>
+                                <p class="text-xs tc-muted mt-1">Sept 2023 — Present</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-sm tc-body leading-relaxed list-none">
+                            <li class="flex gap-2"><span class="bullet-accent mt-1.5">▹</span> Integrated analytics to sharpen marketing and grew traffic roughly 30%.</li>
+                            <li class="flex gap-2"><span class="bullet-accent mt-1.5">▹</span> Helped ship a UI refresh in HTML/CSS that improved on-site engagement.</li>
+                            <li class="flex gap-2"><span class="bullet-accent mt-1.5">▹</span> Tuned performance and cut perceived latency by a large margin.</li>
+                            <li class="flex gap-2"><span class="bullet-accent mt-1.5">▹</span> Documented systems so the team could ship and maintain faster.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="relative pl-10 reveal timeline-item-last">
+                    <span class="timeline-line" aria-hidden="true"></span>
+                    <div class="timeline-dot absolute left-0 top-1.5" aria-hidden="true"></div>
+                    <div class="card-surface p-6 lg:p-8">
+                        <div class="flex flex-col sm:flex-row sm:items-start gap-4 mb-4">
+                            <img src="https://baz-portfolio.netlify.app/assets/sylvan-gah5OKWY.jpg" alt="Sylvan Learning" class="w-12 h-12 rounded-xl object-cover ring-1 ring-[color:var(--border)]" width="48" height="48">
+                            <div>
+                                <h3 class="text-lg font-semibold tc-heading">Math Tutor</h3>
+                                <p class="text-sm ex-violet font-medium">Sylvan Learning / Independent</p>
+                                <p class="text-xs tc-muted mt-1">June 2017 — Present</p>
+                            </div>
+                        </div>
+                        <ul class="space-y-2 text-sm tc-body leading-relaxed list-none">
+                            <li class="flex gap-2"><span class="bullet-violet mt-1.5">▹</span> Tutored 300+ students in SAT Math and Calculus with measurable score gains.</li>
+                            <li class="flex gap-2"><span class="bullet-violet mt-1.5">▹</span> Built a robotics and block-coding curriculum for younger learners.</li>
+                            <li class="flex gap-2"><span class="bullet-violet mt-1.5">▹</span> Strong communication with students, families, and colleagues.</li>
+                        </ul>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 reveal">
+                <div>
+                    <p class="eyebrow mb-3">Projects</p>
+                    <h2 class="section-title tc-heading">Selected builds</h2>
+                </div>
+                <a href="https://github.com/nomadbuzz" class="text-sm font-semibold link-accent inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">GitHub profile <i class="fas fa-arrow-up-right-from-square text-xs opacity-70"></i></a>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+                <article class="project-card flex flex-col reveal">
+                    <div class="overflow-hidden aspect-[16/10]">
+                        <img src="https://baz-portfolio.netlify.app/assets/fooddel-ByZIYJkd.png" alt="BuzzBistro preview" class="w-full h-full object-cover" width="640" height="400" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-lg font-semibold tc-heading mb-2">BuzzBistro</h3>
+                        <p class="text-sm tc-body leading-relaxed mb-4 flex-1">Food ordering with auth, cart, admin, Node API, and Stripe checkout.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tag">React</span>
+                            <span class="tag tag-violet">Express</span>
+                            <span class="tag tag-emerald">MongoDB</span>
+                        </div>
+                        <div class="flex flex-wrap gap-4 text-sm font-semibold">
+                            <a href="https://buzz-bistro-frontend.onrender.com/" class="link-accent inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Live demo <i class="fas fa-external-link-alt text-xs"></i></a>
+                            <a href="https://github.com/nomadbuzz/food-delivery" class="link-secondary inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Source <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card flex flex-col reveal">
+                    <div class="overflow-hidden aspect-[16/10]">
+                        <img src="https://baz-portfolio.netlify.app/assets/weather-Dp_OIYiX.jpg" alt="Weather app preview" class="w-full h-full object-cover" width="640" height="400" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-lg font-semibold tc-heading mb-2">Weather App</h3>
+                        <p class="text-sm tc-body leading-relaxed mb-4 flex-1">City search with live data and a metric/imperial toggle.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tag">React</span>
+                            <span class="tag tag-amber">OpenWeather</span>
+                        </div>
+                        <div class="flex flex-wrap gap-4 text-sm font-semibold">
+                            <a href="https://buzz-weather.netlify.app/" class="link-accent inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Live demo <i class="fas fa-external-link-alt text-xs"></i></a>
+                            <a href="https://github.com/nomadbuzz/weather" class="link-secondary inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Source <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card flex flex-col reveal">
+                    <div class="overflow-hidden aspect-[16/10]">
+                        <img src="https://baz-portfolio.netlify.app/assets/project-Bu08kQn4.jpg" alt="To-do app preview" class="w-full h-full object-cover" width="640" height="400" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-lg font-semibold tc-heading mb-2">To-Do List</h3>
+                        <p class="text-sm tc-body leading-relaxed mb-4 flex-1">CRUD tasks with React and Tailwind; persists locally in the browser.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tag">React</span>
+                            <span class="tag tag-sky">Tailwind</span>
+                        </div>
+                        <div class="flex flex-wrap gap-4 text-sm font-semibold">
+                            <a href="https://buzztodo.netlify.app/" class="link-accent inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Live demo <i class="fas fa-external-link-alt text-xs"></i></a>
+                            <a href="https://github.com/nomadbuzz/todo" class="link-secondary inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Source <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+                <article class="project-card flex flex-col reveal">
+                    <div class="overflow-hidden aspect-[16/10]">
+                        <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=800&q=80&auto=format&fit=crop" alt="Kitchen remodeling preview" class="w-full h-full object-cover" width="640" height="400" loading="lazy">
+                    </div>
+                    <div class="p-6 flex flex-col flex-1">
+                        <h3 class="text-lg font-semibold tc-heading mb-2">Purev Style Remodeling</h3>
+                        <p class="text-sm tc-body leading-relaxed mb-4 flex-1">Multi-section marketing site for a Maryland home-renovation company: services, filterable portfolio with before/after modals, testimonials, and estimate form — built for clarity and leads.</p>
+                        <div class="flex flex-wrap gap-2 mb-5">
+                            <span class="tag">HTML</span>
+                            <span class="tag tag-violet">CSS</span>
+                            <span class="tag tag-amber">JavaScript</span>
+                        </div>
+                        <div class="flex flex-wrap gap-4 text-sm font-semibold">
+                            <a href="https://purevstyle.netlify.app/" class="link-accent inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Live demo <i class="fas fa-external-link-alt text-xs"></i></a>
+                            <a href="https://github.com/nomadbuzz/purevstyle" class="link-secondary inline-flex items-center gap-2" target="_blank" rel="noopener noreferrer">Source <i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 border-t bdr-top">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+                <div class="reveal">
+                    <p class="eyebrow mb-3">Contact</p>
+                    <h2 class="section-title tc-heading mb-4">Tell me about what you&apos;re building</h2>
+                    <p class="tc-body mb-8 leading-relaxed">Freelance or full-time — I&apos;m happy to talk product, timelines, or stack. Email is fastest; the form opens a pre-filled message in your mail client.</p>
+                    <a href="mailto:baz.coding@gmail.com" class="inline-flex items-center gap-3 tc-heading font-semibold group">
+                        <span class="flex h-12 w-12 items-center justify-center rounded-xl bg-cyan-500/15 border border-cyan-500/25">
+                            <i class="fas fa-envelope link-accent" aria-hidden="true"></i>
+                        </span>
+                        <span class="group-hover:opacity-90 transition">baz.coding@gmail.com</span>
+                    </a>
+                </div>
+                <form id="contact-form" class="card-surface p-7 lg:p-8 space-y-4 reveal">
+                    <div>
+                        <label for="name" class="label-form block text-xs font-semibold mb-2 uppercase tracking-wide">Name</label>
+                        <input type="text" id="name" name="name" required autocomplete="name" class="form-input" placeholder="Your name">
+                    </div>
+                    <div>
+                        <label for="email" class="label-form block text-xs font-semibold mb-2 uppercase tracking-wide">Email</label>
+                        <input type="email" id="email" name="email" required autocomplete="email" class="form-input" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <label for="message" class="label-form block text-xs font-semibold mb-2 uppercase tracking-wide">Message</label>
+                        <textarea id="message" name="message" rows="4" required class="form-input resize-y min-h-[120px]" placeholder="Project details, links, timeline…"></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary w-full rounded-xl py-3.5 text-sm font-semibold">Send via email</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="py-20 md:py-28 px-4 sm:px-6 lg:px-8 bg-sec border-t bdr-top">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12 reveal">
+                <p class="eyebrow mb-3">Resume</p>
+                <h2 class="section-title tc-heading">Education &amp; snapshot</h2>
+            </div>
+            <div class="card-surface p-8 lg:p-10 reveal">
+                <div class="flex flex-col lg:flex-row lg:justify-between gap-8 mb-10 pb-10 border-b bdr-default">
+                    <div>
+                        <h3 class="text-2xl font-bold tc-heading tracking-tight">Batzaya Byambasuren</h3>
+                        <p class="ex-accent font-medium mt-1">Full-stack developer</p>
+                    </div>
+                    <ul class="space-y-2 text-sm tc-body">
+                        <li class="flex items-center gap-2"><i class="fas fa-envelope tc-icon w-4"></i> baz.coding@gmail.com</li>
+                        <li class="flex items-center gap-2"><i class="fas fa-phone tc-icon w-4"></i> 571-842-2410</li>
+                        <li class="flex items-center gap-2">
+                            <i class="fab fa-linkedin tc-icon w-4"></i>
+                            <a href="https://www.linkedin.com/in/bazcoding/" class="link-accent transition" target="_blank" rel="noopener noreferrer">linkedin.com/in/bazcoding</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="grid lg:grid-cols-2 gap-10">
+                    <div>
+                        <h4 class="text-sm font-bold tc-heading uppercase tracking-wider mb-3">Technical skills</h4>
+                        <p class="text-sm tc-body leading-relaxed">JavaScript · Python · Java · C++ · React · Node · HTML · CSS · MongoDB · Express · Git · GraphQL · Tailwind · Firebase · Vite · TypeScript · Flutter · responsive design · UX/UI</p>
+                    </div>
+                    <div>
+                        <h4 class="text-sm font-bold tc-heading uppercase tracking-wider mb-3">Languages</h4>
+                        <p class="text-sm tc-body">English · American Sign Language · Mongolian</p>
+                    </div>
+                </div>
+                <div class="mt-10 pt-10 border-t bdr-default">
+                    <h4 class="text-sm font-bold tc-heading uppercase tracking-wider mb-4">Education</h4>
+                    <p class="tc-heading font-semibold">University of the Potomac, Washington DC</p>
+                    <p class="text-sm tc-muted mt-1">BS Information Technology (GPA 3.74) — completed Dec 2024</p>
+                    <p class="text-sm tc-body mt-3 leading-relaxed">Coursework: data communications &amp; networking, programming &amp; logic, databases, systems analysis, network security, and related IT fundamentals.</p>
+                </div>
+                <div class="mt-10 flex flex-wrap gap-3 justify-center">
+                    <a href="resumeFinal.pdf" download="Batzaya-Byambasuren-resume.pdf" class="btn-primary inline-flex items-center justify-center rounded-full px-6 py-3 text-sm gap-2"><i class="fas fa-download" aria-hidden="true"></i> Download resume PDF</a>
+                    <a href="resumeFinal.pdf" target="_blank" rel="noopener noreferrer" class="btn-ghost inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold gap-2"><i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i> Open in new tab</a>
+                    <a href="https://www.linkedin.com/in/bazcoding/" class="btn-ghost inline-flex items-center justify-center rounded-full px-6 py-3 text-sm font-semibold" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer-area border-t py-12 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-center md:text-left">
+                <span class="text-sm font-semibold tc-heading tracking-tight">Batzaya Byambasuren</span>
+                <p class="text-sm tc-muted mt-1">Built with HTML, Tailwind, and a bit of vanilla JS.</p>
+            </div>
+            <div class="flex items-center gap-5">
+                <a href="https://github.com/nomadbuzz" class="tc-muted hover-heading text-xl transition" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/bazcoding/" class="tc-muted hover-heading text-xl transition" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:baz.coding@gmail.com" class="tc-muted hover:opacity-80 text-xl transition link-accent" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+        <p class="text-center text-xs tc-subtle mt-10">&copy; <span id="year"></span> Batzaya Byambasuren. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+    <script src="js/script.js"></script>
+</body>
+</html>
